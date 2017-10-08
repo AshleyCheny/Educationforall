@@ -51,13 +51,17 @@
 
     register = function(user) {
       return $http.post('/api/register', user).then(function(data){
-        saveToken(data.token);
+        saveToken(data.data.token);
       });
     };
 
     login = function(user) {
       return $http.post('/api/login', user).then(function(data) {
-        saveToken(data.token);
+        // console.log(data);
+        // console.log(data.data);
+        // console.log(data.data.token);
+        // console.log(data.token);
+        saveToken(data.data.token);
       });
     };
 

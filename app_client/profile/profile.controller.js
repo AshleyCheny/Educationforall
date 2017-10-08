@@ -12,7 +12,8 @@
 
     meanData.getProfile()
       .then(function(data) {
-        vm.user = data;
+        // console.log(data);
+        vm.user = data.data;
       })
       .catch(function (e) {
         console.log(e);
