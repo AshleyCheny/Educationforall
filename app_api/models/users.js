@@ -8,7 +8,8 @@
 ** combine it with the salt and encrypt it again.
 ** If the output of this matches the hash, then the password must have been correct.
 */
-
+// create the mongoose module variable
+var mongoose = require( 'mongoose' );
 // use Node.js module crypto to help setting and checking the password
 var crypto = require('crypto');
 // use module jsonwebtoken to generate JSON Web Token (JWT)
@@ -65,3 +66,6 @@ userSchema.methods.generateJwt = function() {
     exp: parseInt(expiry.getTime() / 1000),
   }, "MY_SECRET"); // DO NOT KEEP YOUR SECRET IN THE CODE!
 };
+
+// set the userSchema variable as a model and set the model name as "User"
+mongoose.model('User', userSchema);
