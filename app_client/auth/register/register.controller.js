@@ -18,11 +18,11 @@
       console.log('Submitting registration');
       authentication
         .register(vm.credentials)
-        .error(function(err){
-          alert(err);
-        })
         .then(function(){
           $location.path('profile');
+        })
+        .catch(function(e){
+          alert(e);
         });
     };
 

@@ -11,10 +11,10 @@
     vm.user = {};
 
     meanData.getProfile()
-      .success(function(data) {
+      .then(function(data) {
         vm.user = data;
       })
-      .error(function (e) {
+      .catch(function (e) {
         console.log(e);
       });
   }

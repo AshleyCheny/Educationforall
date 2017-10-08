@@ -4,7 +4,7 @@
   "description": "This is educationforall website server.",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon --watch educationforall-v2"
+    "start": "node ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -31,5 +31,15 @@
     "passport-local": "^1.0.0",
     "reload": "^2.2.2",
     "serve-favicon": "~2.2.0"
-  }
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-ng-annotate": "^1.1.0",
+    "gulp-ng-html2js": "^0.2.0",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
+    "gulp-watch": "^4.3.4"
+}
+
 }

@@ -1,3 +1,5 @@
+// save, read and delete a JWT using localStorage
+
 (function () {
 
   angular
@@ -5,12 +7,16 @@
     .service('authentication', authentication);
 
   authentication.$inject = ['$http', '$window'];
+
+  // create the authentication function that returns functions
   function authentication ($http, $window) {
 
+    // save the token sent by the server to the browser
     var saveToken = function (token) {
       $window.localStorage['mean-token'] = token;
     };
 
+    // get the token saved in the localStorage
     var getToken = function () {
       return $window.localStorage['mean-token'];
     };
@@ -44,17 +50,18 @@
     };
 
     register = function(user) {
-      return $http.post('/api/register', user).success(function(data){
+      return $http.post('/api/register', user).then(function(data){
         saveToken(data.token);
       });
     };
 
     login = function(user) {
-      return $http.post('/api/login', user).success(function(data) {
+      return $http.post('/api/login', user).then(function(data) {
         saveToken(data.token);
       });
     };
 
+    // remove the token in browser localStorage when users logout
     logout = function() {
       $window.localStorage.removeItem('mean-token');
     };

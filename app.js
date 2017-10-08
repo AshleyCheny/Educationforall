@@ -18,15 +18,42 @@ var routesApi = require('./app_api/routes/index');
 
 var app = express();
 
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
+// uncomment after placing your favicon in /public
+//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+// [SH] Set the app_client folder to serve static resources
+app.use(express.static(path.join(__dirname, 'app_client')));
+
 // Initialise Passport before using the route middleware
 app.use(passport.initialize());
 
 // Use the API routes when path starts with /api
 app.use('/api', routesApi);
 
-app.get('/', (req, res) => {
-  res.send('HEY!')
+// Otherwise render the index.html page for the Angular SPA
+// This means we don't have to map all of the SPA routes in Express
+app.use(function(req, res) {
+  res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
 });
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+
+// app.get('/', (req, res) => {
+//   res.send('HEY!')
+// });
 
 
 
@@ -38,4 +65,29 @@ app.use(function (err, req, res, next) {
     res.json({"message" : err.name + ": " + err.message});
   }
 });
-app.listen(3000, () => console.log('Server running on port 3000'));
+
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
+    });
+}
+
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
+});
+
+
+module.exports = app;
+// app.listen(3000, () => console.log('Server running on port 3000'));
