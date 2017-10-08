@@ -12,6 +12,11 @@
 
     vm.currentUser = authentication.currentUser();
 
+    vm.onClick = function () {
+      console.log('Logout');
+      authentication.logout();
+    };
+
   }
 
 })();
