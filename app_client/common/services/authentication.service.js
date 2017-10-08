@@ -68,6 +68,7 @@
     // remove the token in browser localStorage when users logout
     logout = function() {
       $window.localStorage.removeItem('mean-token');
+      return true;
     };
 
     return {

@@ -13,8 +13,14 @@
     vm.currentUser = authentication.currentUser();
 
     vm.onClick = function () {
-      console.log('Logout');
-      authentication.logout();
+      var logout = authentication.logout();
+      if (logout) {
+        if ($location.$$path == "/") {
+          vm.isLoggedIn = false;
+        } else {
+          $location.path('/');
+        }
+      }
     };
 
   }
