@@ -9,6 +9,8 @@
     var vm = this;
 
     vm.user = {};
+    // create the controller's paperInfo object
+    vm.paperInfo = {};
 
     meanData.getProfile()
       .then(function(data) {
@@ -19,8 +21,14 @@
         console.log(e);
       });
 
-      // TODO: add a onSubmit() method to profileCtrl
-      
+    // TODO: add a onSubmit() method to profileCtrl
+    vm.paperInfo = {
+      pageTitle: "",
+      abstract: "",
+      keywords: [],
+      paperFile: "",
+      graphicFile: ""
+    }
   }
 
 })();
