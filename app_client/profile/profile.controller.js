@@ -18,6 +18,9 @@
       .catch(function (e) {
         console.log(e);
       });
+
+      // TODO: add a onSubmit() method to profileCtrl
+      
   }
 
 })();
