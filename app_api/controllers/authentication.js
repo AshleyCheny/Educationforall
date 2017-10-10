@@ -40,6 +40,7 @@ module.exports.register = function(req, res) {
 // login controller
 module.exports.login = function(req, res) {
 
+  // get the credentails info from the req object and pass it to the authenticate method
   passport.authenticate('local', function(err, user, info){
     var token;
 

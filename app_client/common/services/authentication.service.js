@@ -55,6 +55,8 @@
       });
     };
 
+    // being called in the onSubmit() event handler
+    // send the post request to the server and get the response
     login = function(user) {
       return $http.post('/api/login', user).then(function(data) {
         // console.log(data);
