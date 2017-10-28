@@ -17,7 +17,7 @@ module.exports.profileRead = function(req, res) {
         res.status(200).json(user);
       });
 
-      // TODO: show authors the submit paper form and display all the papers they submit
-  }
+    // TODO: show authors the submit paper form and display all the papers they submit
 
+  }
 };
