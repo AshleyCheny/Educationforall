@@ -2,11 +2,8 @@
 
 <div class="container">
   <div class="row">
-
      <div class="col-md-12">
-
       <h2 class="form-signin-heading">Your profile</h2>
-
       <form  class="form-horizontal">
         <div class="form-group">
           <label class="col-sm-3 control-label">Full name</label>
@@ -18,35 +15,19 @@
         </div>
       </form>
 
-      <!--  Manuscript Submission Form -->
-      <h2 class="form-signin-heading">Submit Your Manuscript</h2>
-      <form ng-submit="vm.onSubmit()">
-        <div class="form-group">
-          <label for="paper-title">Paper Title</label>
-          <input type="text" class="form-control" id="paper-title" placeholder="Enter your paper title" ng-model="vm.paperInfo.paperTitle" name="paperTitle">
+      <div class="card">
+        <div class="card-header">
+          Submit a Manuscript
         </div>
-        <div class="form-group">
-          <label for="abstract">Abstract</label>
-          <textarea type="text" class="form-control" id="abstract" placeholder="Enter your paper abstract" ng-model="vm.paperInfo.abstract" row="6" name="paperAbstract"></textarea>
+        <div class="card-body">
+          <h4 class="card-title">Special title treatment</h4>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="profile/submission" class="btn btn-primary">Go somewhere</a>
         </div>
-        <div class="form-group">
-          <label for="keywords">Keywords</label>
-          <input type="text" class="form-control" id="keywords" placeholder="Enter your paper keywords" ng-model="vm.paperInfo.keywords" name="paperKeywords">
-        </div>
-        <div class="form-group">
-          <label for="paper-file">Paper File</label>
-          <input type="file" class="form-control" id="paper-file" ng-model="vm.paperInfo.paperFile" name="paperFile">
-        </div>
-        <div class="form-group">
-          <label for="graphic-file">Graphic File</label>
-          <input type="file" class="form-control" id="graphic-file" ng-model="vm.paperInfo.graphicFile" name="graphicFile">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
+      </div>
 
     </div>
-
   </div>
 </div>
 
-<footer class="footer"></footer>
+<footer></footer>

@@ -20,15 +20,6 @@
       .catch(function (e) {
         console.log(e);
       });
-
-    // TODO: add a onSubmit() method to profileCtrl
-    vm.paperInfo = {
-      pageTitle: "",
-      abstract: "",
-      keywords: [],
-      paperFile: "",
-      graphicFile: ""
-    }
   }
 
 })();

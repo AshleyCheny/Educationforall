@@ -25,6 +25,11 @@
         controller: 'profileCtrl',
         controllerAs: 'vm'
       })
+      .when('/profile/submission', {
+        templateUrl: '/profile/submission/submission.view.html',
+        controller: 'submissionCtrl',
+        controllerAs: 'vm'
+      })
       .otherwise({redirectTo: '/'});
 
     // use the HTML5 History API
@@ -34,6 +39,9 @@
   function run($rootScope, $location, authentication) {
     $rootScope.$on('$routeChangeStart', function(event, nextRoute, currentRoute) {
       if ($location.path() === '/profile' && !authentication.isLoggedIn()) {
+        $location.path('/');
+      }
+      if ($location.path() === '/profile/submission' && !authentication.isLoggedIn()) {
         $location.path('/');
       }
     });

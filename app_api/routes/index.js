@@ -41,11 +41,10 @@ router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 
 /** API path that will upload the files */
-var muluploads = upload.fields([ {name: 'paperFile', maxCount: 1}, { name: 'graphicFile', maxCount: 8 } ]);
-router.post('/upload', muluploads, function(req, res, next) {
+// var muluploads = upload.fields([ {name: 'paperFile', maxCount: 1}, { name: 'graphicFile', maxCount: 8 } ]);
+router.post('/profile/submission', upload.any(), function(req, res, next) {
   console.log('fired');
-  console.log(req);
-  console.log(req.body);
+  console.log(req.body.data);
   console.log(req.files);
   newSubmission.save(function(err){
     res.send("successfully add");

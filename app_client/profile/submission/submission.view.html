@@ -1,0 +1,60 @@
+<navigation></navigation>
+
+<div class="container">
+
+  <!--  Manuscript Submission Form -->
+  <h2 class="form-signin-heading text-center">Submit Your Manuscript</h2>
+  <form ng-submit="vm.onSubmit()">
+    <input type="text" ng-model="vm.submission.userId" class="hide" value="">
+    <input type="text" ng-model="vm.submission.userEmail" class="hide" value="">
+    <div class="form-group">
+      <label for="paper-title">Title</label>
+      <input type="text" class="form-control" id="paper-title" placeholder="Enter your paper title" ng-model="vm.submission.title">
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="submissionType">Submission Type</label>
+          <select class="form-control" id="submissionType" ng-model="vm.submission.submissionType" ng-options="x for x in {{ vm.submissionTypes }}">
+          </select>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="submissionFor">Submission For</label>
+          <select class="form-control" id="submissionFor" ng-model="vm.submission.submissionFor" ng-options="x for x in {{ vm.submissionFor }}">
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="submissionCategory">Submission Category</label>
+      <select class="form-control" id="submissionCategory" ng-model="vm.submission.submissionCategory" ng-options="x for x in {{ vm.submissionCategory }}">
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="abstract">Abstract</label>
+      <textarea type="text" class="form-control" id="abstract" placeholder="Enter your paper abstract" ng-model="vm.submission.abstract" row="10" name="paperAbstract"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="keywords">Keywords</label>
+      <input type="text" class="form-control" id="keywords" placeholder="Enter your paper keywords" ng-model="vm.submission.keywords" name="paperKeywords">
+    </div>
+    <div class="form-group">
+      <label for="paper-file">Paper File</label>
+      <input type="file" class="form-control" id="paper-file" file-model="vm.files[0]" name="paperFile">
+    </div>
+    <div class="form-group">
+      <label for="graphic-file">Graphic File</label>
+      <input type="file" class="form-control" id="graphic-file" file-model="vm.files[1]" name="graphicFile">
+    </div>
+    <div class="form-group">
+      <label for="author">Author</label>
+      <input type="text" class="form-control" placeholder="Enter the author name" ng-model="vm.submission.author" name="author">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+
+
+<footer></footer>
