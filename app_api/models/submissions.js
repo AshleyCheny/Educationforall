@@ -3,7 +3,7 @@ var mongoose = require( 'mongoose' );
 var submissionSchema = new mongoose.Schema({
   userId: {
     type: String,
-    unique: true,
+    // unique: true,
     required: true
   },
   userEmail: {
@@ -25,23 +25,41 @@ var submissionSchema = new mongoose.Schema({
   abstract: {
     type: String
   },
-  keywords: {
-    type: Array
-  },
-  paperFiles: {
-    type: Array
-  },
-  graphicFiles: {
-    type: Array
-  },
+  keywords: [],
+  files: [ {
+    fieldname: {
+      type: String,
+    },
+    originalname: {
+      type: String
+    },
+    encoding: {
+      type: String
+    },
+    mimetype: {
+      type: String
+    },
+    destination: {
+      type: String
+    },
+    filename: {
+      type: String
+    },
+    path: {
+      type: String
+    },
+    size: {
+      type: String
+    }
+  } ],
   authors: {
-    type: Array
+    type: String
   },
   reviewers: {
-    type: Array
+    type: String
   },
   reviewees: {
-    type: Array
+    type: String
   }
 });
 

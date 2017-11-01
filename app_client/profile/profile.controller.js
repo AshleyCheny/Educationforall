@@ -9,8 +9,6 @@
     var vm = this;
 
     vm.user = {};
-    // create the controller's paperInfo object
-    vm.paperInfo = {};
 
     meanData.getProfile()
       .then(function(data) {

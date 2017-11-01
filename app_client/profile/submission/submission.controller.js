@@ -9,8 +9,20 @@
       var vm = this;
       var yearCount = 10;
       var currentYear = (new Date()).getFullYear();
-      vm.submission = {};
+
       vm.files = [];
+
+      vm.submission = {
+        userId: '',
+        userEmail: '',
+        submissionType: '',
+        submissionCategory: '',
+        submissionFor: '',
+        title: '',
+        abstract: '',
+        keywords: '',
+        authors: ''
+      };
 
       // set the data for the view
 
@@ -30,6 +42,7 @@
       vm.onSubmit = function(){
         console.log("submit");
         console.log(vm.submission);
+        console.log(vm.files);
         meanData.submitManuscript(vm.submission, vm.files)
         .then(function(data) {
           console.log(data);
