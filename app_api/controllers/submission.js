@@ -5,7 +5,7 @@ module.exports.submitManuscript = function(req, res) {
   console.log('fired');
   var newSubmission = new Submission(req.body);
   console.log(req.body.submissionType);
-  newSubmission.userId = "fdffs,,";
+  newSubmission.userId = "fdffs12";
   newSubmission.userEmail = "ashleychen@gmaf.com";
   newSubmission.files = req.files;
 

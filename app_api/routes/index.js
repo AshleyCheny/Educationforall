@@ -40,6 +40,7 @@ router.post('/login', ctrlAuth.login);
 
 /** API path that will upload the files */
 // var muluploads = upload.fields([ {name: 'paperFile', maxCount: 1}, { name: 'graphicFile', maxCount: 8 } ]);
+console.log("routes");
 router.post('/create', upload.any(), ctrlSubmission.submitManuscript);
 
 module.exports = router;
