@@ -12,7 +12,8 @@ module.exports.submitManuscript = function(req, res) {
   console.log(req.files[0].destination);
   newSubmission.save(function(err){
     if(err){
-      throw err;
+      res.send(err);
+      console.log("opps, error");
     } else {
       res.send("successfully add");
     }

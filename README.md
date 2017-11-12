@@ -1,0 +1,1 @@
+- files fields are required for the manuscript submission form

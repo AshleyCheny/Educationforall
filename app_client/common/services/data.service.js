@@ -18,8 +18,8 @@
 
     var submitManuscript = function(formData, files){
       var fd = new FormData();
-      console.log(formData);
-      console.log(files);
+      console.log("submitManuscript function: ", formData);
+      console.log("submitManuscript function: ", files);
 
       angular.forEach(files,function(file){
         fd.append('file', file);
