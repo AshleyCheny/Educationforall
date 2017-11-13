@@ -3,11 +3,9 @@ var mongoose = require( 'mongoose' );
 var submissionSchema = new mongoose.Schema({
   userId: {
     type: String,
-    required: true
   },
   userEmail: {
     type: String,
-    required: true
   },
   submissionType: {
     type: String

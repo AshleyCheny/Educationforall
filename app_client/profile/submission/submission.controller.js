@@ -41,11 +41,22 @@
       // submission category dropdown
       vm.submissionCategory = ["Journal of Mathematics Education", "Others"];
 
+      // get the userEmail
+      meanData.getProfile()
+        .then(function(data){
+          console.log("data", data);
+          vm.submission.userEmail = data.data.email;
+        })
+        .catch(function (e) {
+          console.log(e);
+        });
+
       // submit the form data
       vm.onSubmit = function(){
         console.log("submit");
         console.log(vm.submission);
         console.log(vm.files);
+
         meanData.submitManuscript(vm.submission, vm.files)
         .then(function(data) {
           console.log("Thank you for submitting the ", data);
