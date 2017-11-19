@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var Submission = mongoose.model('Submission');
 
 module.exports.profileRead = function(req, res) {
 
@@ -21,3 +22,17 @@ module.exports.profileRead = function(req, res) {
 
   }
 };
+
+// get submission callback method
+module.exports.getSubmissions = function(req, res){
+  // query the db based on the userEmail
+  Submission.find({userEmail: req.params.user_email }, function(err, doc){
+    if (err) {
+      console.log("Oops, get submission from server error");
+      res.send(err);
+    } else {
+      res.status(200).json(doc);
+    }
+  });
+
+}

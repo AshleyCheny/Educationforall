@@ -43,9 +43,14 @@
       });
     }
 
+    var getSubmissions = function(userEmail){
+      return $http.get('/api/submissions/' + userEmail);
+    }
+
     return {
       getProfile : getProfile,
-      submitManuscript: submitManuscript
+      submitManuscript: submitManuscript,
+      getSubmissions: getSubmissions
     };
   }
 

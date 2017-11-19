@@ -30,7 +30,6 @@ var ctrlProfile = require('../controllers/profile');
 var ctrlAuth = require('../controllers/authentication');
 var ctrlSubmission = require('../controllers/submission');
 
-
 // apply the route authentication
 router.get('/profile', auth, ctrlProfile.profileRead);
 
@@ -40,7 +39,9 @@ router.post('/login', ctrlAuth.login);
 
 /** API path that will upload the files */
 // var muluploads = upload.fields([ {name: 'paperFile', maxCount: 1}, { name: 'graphicFile', maxCount: 8 } ]);
-console.log("routes");
 router.post('/create', upload.any(), ctrlSubmission.submitManuscript);
+
+// route for getting all the submissions for a specific user
+router.get('/submissions/:user_email', ctrlProfile.getSubmissions);
 
 module.exports = router;
