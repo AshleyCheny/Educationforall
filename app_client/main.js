@@ -30,6 +30,11 @@
         controller: 'submissionCtrl',
         controllerAs: 'vm'
       })
+      .when('/profile/submissions/:submissionCategory/:submissionFor', {
+        templateUrl: '/profile/submissions/submissions.view.html',
+        controller: 'submissionDetailsCtrl',
+        controllerAs: 'vm'
+      })
       .otherwise({redirectTo: '/'});
 
     // use the HTML5 History API
