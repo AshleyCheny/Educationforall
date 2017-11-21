@@ -57,6 +57,10 @@ var submissionSchema = new mongoose.Schema({
   },
   reviewees: {
     type: String
+  },
+  timestamp: {
+    type: Date,
+    default: Date.now
   }
 });
 

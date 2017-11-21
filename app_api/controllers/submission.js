@@ -6,6 +6,7 @@ module.exports.submitManuscript = function(req, res) {
   // save the submission form data to the submission collection
   var newSubmission = new Submission(req.body);
   newSubmission.files = req.files;
+  newSubmission.timestamp = Date.now();
 
   console.log(req.files[0].destination);
   newSubmission.save(function(err){
