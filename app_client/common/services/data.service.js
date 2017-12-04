@@ -43,8 +43,12 @@
       });
     }
 
-    var getSubmissions = function(userEmail){
-      return $http.get('/api/submissions/' + userEmail);
+    var getSubmissions = function(userEmail, routeParams){
+      if (routeParams) {
+        return $http.get('/api/submissions/' + userEmail + '/?category=' + routeParams.submissionCategory + '&target=' + routeParams.submissionFor);
+      } else {
+        return $http.get('/api/submissions/' + userEmail);
+      }
     }
 
     return {

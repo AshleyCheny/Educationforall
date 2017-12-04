@@ -18,9 +18,6 @@ module.exports.profileRead = function(req, res) {
       .exec(function(err, user) {
         res.status(200).json(user);
       });
-
-    // TODO: show authors the submit paper form and display all the papers they submit
-
   }
 };
 
@@ -28,6 +25,7 @@ module.exports.profileRead = function(req, res) {
 module.exports.getSubmissions = function(req, res){
   console.log(_.isEmpty(req.query));
   console.log(req.query);
+  // no query
   if (_.isEmpty(req.query)) {
     // query the db based on the userEmail
     Submission.find({userEmail: req.params.user_email }, function(err, doc){
@@ -42,7 +40,7 @@ module.exports.getSubmissions = function(req, res){
     // query based on the userEmail, category and target year
     var cursor = Submission.find({
       userEmail: req.params.user_email,
-      submissionCategory: req.query.category,
+      submissionCategory: (req.query.category == 'jme')? 'Journal of Mathematics Education': 'Others',
       submissionFor: req.query.target
     });
     var doc = [];
@@ -53,21 +51,11 @@ module.exports.getSubmissions = function(req, res){
       if (err) {
         console.log(err);
       } else {
+        res.send(doc);
         console.log("doc",doc);
       }
 
     });
-
-
-    // Submission.find({userEmail: req.params.user_email, submissionCategory: req.query.category,
-    // submissionFor: req.query.target} , function(err, doc){
-    //   if (err) {
-    //     console.log("Oops, get submission from server error");
-    //     res.send(err);
-    //   } else {
-    //     res.status(200).json(doc);
-    //   }
-    // });
   }
 
 
