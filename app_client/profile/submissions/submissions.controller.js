@@ -22,7 +22,7 @@
             .then(function(data){
               console.log('fired', data);
               // get the response data from the api and append it to the controller
-              
+              vm.data = data.data;
             })
             .catch(function(err){
               console.log(err);
