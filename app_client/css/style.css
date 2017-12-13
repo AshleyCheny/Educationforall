@@ -31,6 +31,12 @@
 /* PADDING TOP*/
 /* MARGINS */
 /* MARGIN TOP */
+.mtop-10 {
+  margin-top: 10px;
+}
+.mtop-20 {
+  margin-top: 20px;
+}
 .mtop-30 {
   margin-top: 30px;
 }

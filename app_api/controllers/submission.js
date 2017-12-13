@@ -1,5 +1,8 @@
 var mongoose = require('mongoose');
+var fs = require('fs');
+var path = require('path');
 var Submission = mongoose.model('Submission');
+
 
 module.exports.submitManuscript = function(req, res) {
 
@@ -20,3 +23,13 @@ module.exports.submitManuscript = function(req, res) {
   });
 
 };
+
+module.exports.getSumissionFile = function(req,res){
+  console.log("params",req.params);
+  // get the file from the file system, and send it back to the client
+  console.log(__dirname);
+  res.set('Content-Disposition', req.params.fileName);
+  res.download(process.cwd() + "/uploads/" + req.params.fileName, function(err){
+    console.log(err);
+  });
+}

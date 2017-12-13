@@ -13,7 +13,7 @@ var storage = multer.diskStorage({
     cb(null, './uploads/');
   },
   filename: function(req, file, cb){
-    cb(null, file.originalname);
+    cb(null, Date.now() + "_" + file.originalname.replace(/\s+/g, '_'));
   }
 });
 
@@ -43,5 +43,8 @@ router.post('/create', upload.any(), ctrlSubmission.submitManuscript);
 
 // route for getting all the submissions for a specific user
 router.get('/submissions/:user_email', ctrlProfile.getSubmissions);
+
+// route for getting the files from the file system
+router.get('/files/:fileName', ctrlSubmission.getSumissionFile);
 
 module.exports = router;

@@ -23,6 +23,11 @@
               console.log('fired', data);
               // get the response data from the api and append it to the controller
               vm.data = data.data;
+
+              // onclick event handler
+              vm.onClick = function(fileName){
+                window.open('/api/files/' + fileName);
+              }
             })
             .catch(function(err){
               console.log(err);
@@ -31,6 +36,8 @@
         .catch(function (e) {
           console.log(e);
         });
+
+
 
 
     }

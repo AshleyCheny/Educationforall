@@ -51,10 +51,15 @@
       }
     }
 
+    var getSumissionFile = function(fileName){
+      return $http.get('/api/files/'+ fileName);
+    }
+
     return {
       getProfile : getProfile,
       submitManuscript: submitManuscript,
-      getSubmissions: getSubmissions
+      getSubmissions: getSubmissions,
+      getSumissionFile: getSumissionFile
     };
   }
 

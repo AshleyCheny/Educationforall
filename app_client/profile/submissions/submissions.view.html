@@ -1,7 +1,7 @@
 <navigation></navigation>
 
 <div class="container main-test">
-  <h2 class="text-center">Submissions of {{ vm.routeParams.submissionCategory }} for {{ vm.routeParams.submissionFor }}</h2>
+  <h2 class="text-center mtop-30 mbottom-30">Submissions of {{ vm.routeParams.submissionCategory }} for {{ vm.routeParams.submissionFor }}</h2>
   <div class="row" ng-repeat="submission in vm.data">
     <div class="col-sm-12" ng-repeat="file in submission.files">
       <div class="container">
@@ -10,7 +10,7 @@
             {{ submission.submissionType }}
           </div>
           <div class="col-7">
-            <a href="{{ file.path }}">{{ file.originalname }}</a>
+            <a href="" target="_blank" ng-click="vm.onClick(file.filename);">{{ file.originalname }}</a>
           </div>
           <div class="col-3 text-right">
             <button type="button" name="button">Update</button>
