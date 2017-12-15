@@ -47,4 +47,7 @@ router.get('/submissions/:user_email', ctrlProfile.getSubmissions);
 // route for getting the files from the file system
 router.get('/files/:fileName', ctrlSubmission.getSumissionFile);
 
+// delete file from one submission document
+router.delete('/delete/submissions/:submissionId/files/:fileId', ctrlSubmission.deleteFile);
+
 module.exports = router;

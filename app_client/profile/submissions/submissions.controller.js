@@ -28,6 +28,19 @@
               vm.onClick = function(fileName){
                 window.open('/api/files/' + fileName);
               }
+
+              // delete event handler
+              vm.deleteFile = function(submissionId, fileId){
+                console.log(submissionId, fileId);
+                meanData.deleteFile(submissionId, fileId)
+                  .then(function(data){
+                    // hide the file
+                    
+                  })
+                  .catch(function(err){
+                    console.log(err);
+                  });
+              }
             })
             .catch(function(err){
               console.log(err);

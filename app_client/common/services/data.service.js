@@ -55,11 +55,16 @@
       return $http.get('/api/files/'+ fileName);
     }
 
+    var deleteFile = function(submissionId, fileId){
+      return $http.delete('/api/delete/submissions/' + submissionId +'/files/' + fileId);
+    }
+
     return {
       getProfile : getProfile,
       submitManuscript: submitManuscript,
       getSubmissions: getSubmissions,
-      getSumissionFile: getSumissionFile
+      getSumissionFile: getSumissionFile,
+      deleteFile: deleteFile
     };
   }
 
