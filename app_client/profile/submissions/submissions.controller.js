@@ -24,6 +24,14 @@
               // get the response data from the api and append it to the controller
               vm.data = data.data;
 
+              // check if there are no files
+              vm.hasFile = false;
+              angular.forEach(vm.data, function(doc, index){
+                if (doc.files.length > 0) {
+                  vm.hasFile = true;
+                }
+              });
+
               // onclick event handler
               vm.onClick = function(fileName){
                 window.open('/api/files/' + fileName);
@@ -31,11 +39,9 @@
 
               // delete event handler
               vm.deleteFile = function(submissionId, fileId){
-                console.log(submissionId, fileId);
                 meanData.deleteFile(submissionId, fileId)
                   .then(function(data){
-                    // hide the file
-                    
+                    window.location.reload();
                   })
                   .catch(function(err){
                     console.log(err);
