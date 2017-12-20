@@ -59,12 +59,17 @@
       return $http.delete('/api/delete/submissions/' + submissionId +'/files/' + fileId);
     }
 
+    var signUpAsReviewer = function(userEmail){
+      return $http.put('/api/reviewer_sign_up/' + userEmail);
+    }
+
     return {
       getProfile : getProfile,
       submitManuscript: submitManuscript,
       getSubmissions: getSubmissions,
       getSumissionFile: getSumissionFile,
-      deleteFile: deleteFile
+      deleteFile: deleteFile,
+      signUpAsReviewer: signUpAsReviewer
     };
   }
 

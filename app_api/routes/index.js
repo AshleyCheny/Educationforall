@@ -33,6 +33,8 @@ var ctrlSubmission = require('../controllers/submission');
 // apply the route authentication
 router.get('/profile', auth, ctrlProfile.profileRead);
 
+router.put('/reviewer_sign_up/:userEmail', ctrlProfile.signUpAsReviewer);
+
 // authentication
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);

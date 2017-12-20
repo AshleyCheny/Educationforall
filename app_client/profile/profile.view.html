@@ -73,9 +73,17 @@
           <h3>Sign Up as a Reviewer</h3>
         </div>
         <div class="card-body">
-          <h4 class="card-title">We appreciate your support</h4>
-          <p class="card-text">Please sign up as a reviewer. We really appreciate your support.</p>
-          <a href="profile/submission" class="btn btn-primary">Sign Up as a Reviewer</a>
+          <div ng-hide="vm.reviewer || vm.user.reviewer">
+            <p class="card-text">We really appreciate your support.</p>
+            <button type="button" name="button" class="btn btn-primary" ng-click="vm.onClick()">Sign Up as a Reviewer</button>
+          </div>
+          <div ng-show="vm.user.reviewer">
+            You already signed up as a reviewer. Thanks.
+          </div>
+          <div ng-show="vm.reviewer" class="alert alert-success">
+            Thanks for signing up as a reviewer. We really appreciate your support.
+          </div>
+
         </div>
         <!-- TODO: if already sign up as a reviewer, show the link for all the assigned paper -->
       </div>

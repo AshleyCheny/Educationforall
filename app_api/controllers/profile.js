@@ -23,8 +23,6 @@ module.exports.profileRead = function(req, res) {
 
 // get submission callback method
 module.exports.getSubmissions = function(req, res){
-  console.log(_.isEmpty(req.query));
-  console.log(req.query);
   // no query
   if (_.isEmpty(req.query)) {
     // query the db based on the userEmail
@@ -59,4 +57,19 @@ module.exports.getSubmissions = function(req, res){
   }
 
 
+}
+
+module.exports.signUpAsReviewer = function(req,res){
+  User.findOneAndUpdate(
+    { email: req.params.userEmail },
+    { $set: { reviewer: true} },
+    { new: true },
+    function(err, doc){
+      if (err) {
+        console.log("Oops, there was an error");
+        res.send("Error");
+      } else {
+        res.send("successfully sign up as a reviewer");
+      }
+  });
 }
