@@ -17,6 +17,9 @@ module.exports.register = function(req, res) {
   // take the data from the submitted form and save them in the Mongoose model instance "user"
   user.name = req.body.name;
   user.email = req.body.email;
+  user.roles.editor = req.body.roles.editor;
+  user.roles.author = req.body.roles.author;
+  user.roles.reviewer = req.body.roles.reviewer;
 
   // call the "setPassword" method to add the salt and the hash to the instance
   user.setPassword(req.body.password);

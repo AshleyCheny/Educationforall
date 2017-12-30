@@ -28,7 +28,15 @@ var userSchema = new mongoose.Schema({
   },
   hash: String,
   salt: String,
-  reviewer: Boolean
+  roles: {
+    editor: Boolean,
+    author: Boolean,
+    reviewer: Boolean,
+    admin: {
+      type: Boolean,
+      default: false
+    }
+  }
 });
 
 // create a new method "setPassword" for the userSchema that takes one parameter password

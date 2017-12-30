@@ -3,23 +3,46 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-md-6">
-      <h1>Register</h1>
-      <p class="lead">Already a member? Please <a href="login">log in</a> instead.</p>
+    <div class="col-md-12">
+      <div class="text-center">
+        <h1>Register</h1>
+        <p class="lead">Already a member? Please <a href="login">log in</a> instead.</p>
+      </div>
       <form ng-submit="vm.onSubmit()">
         <div class="form-group">
           <label for="name">Full name</label>
-          <input type="text" class="form-control" id="name" placeholder="Enter your name" ng-model="vm.credentials.name">
+          <input type="text" class="form-control" id="name" placeholder="Enter your name" ng-model="vm.credentials.name" required>
         </div>
         <div class="form-group">
           <label for="email">Email address</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="vm.credentials.email">
+          <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="vm.credentials.email" required>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.credentials.password">
+          <input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.credentials.password" required>
         </div>
-        <button type="submit" class="btn btn-default">Register!</button>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4">
+              <label>Editor:
+                <input type="checkbox" name="role" ng-model="vm.credentials.roles.editor">
+              </label>
+            </div>
+            <div class="col-md-4">
+              <label>Author:
+                <input type="checkbox" name="role" ng-model="vm.credentials.roles.author">
+               </label>
+            </div>
+            <div class="col-md-4">
+              <label>Reviewer:
+                <input type="checkbox" name="role" ng-model="vm.credentials.roles.reviewer">
+               </label>
+            </div>
+          </div>
+        </div>
+        <div class="text-right">
+          <button type="submit" class="btn btn-primary">Register!</button>
+        </div>
       </form>
     </div>
   </div>

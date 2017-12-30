@@ -11,11 +11,16 @@
     vm.credentials = {
       name : "",
       email : "",
-      password : ""
+      password : "",
+      roles: {
+        editor: false,
+        author: false,
+        reviewer: false
+      }
     };
 
     vm.onSubmit = function () {
-      console.log('Submitting registration');
+      console.log(vm.credentials);
       authentication
         .register(vm.credentials)
         .then(function(){
