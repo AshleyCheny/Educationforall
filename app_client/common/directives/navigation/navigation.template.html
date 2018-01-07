@@ -1,15 +1,71 @@
-<div class="navbar navbar-default header-test">
-  <h1>TODO: a responsive header here</h1>
-  <div class="container">
-    <div id="navbar-main">
+<div class="navbar navbar-default is-relative"  ng-mouseleave="vm.hasEnterUserIcon = false">
+  <div class="container-fluid">
+    <!-- Level 1: LOGO -->
+    <div class="col-md-3">
+      <a href="/"><img class="nav--height mleft-m30" src="/images/Education_for_all--logo.jpg" alt="Education For All Logo"></a>
+    </div>
+    <!-- Level 2: Links -->
+    <div class="col-md-8">
       <ul class="nav navbar-nav">
-        <li><a href="/">Home</a></li>
+        <li class="navbar-nav__list-item"><a href="/" class="text-white">Home</a></li>
+        <li class="navbar-nav__list-item is-relative" ng-mouseenter="vm.hasEnterJME = true" ng-mouseleave="vm.hasEnterJME = false">
+          <a href="/" class="text-white">Journal of Math Education</a>
+          <div class="is-absolute navbar__JME" ng-show="vm.hasEnterJME">
+            <a href="#">
+              <div class="navbar__JME__tab">
+                Current Issue
+              </div>
+            </a>
+            <a href="#">
+              <div class="navbar__JME__tab">
+                Back Issues
+              </div>
+            </a>
+          </div>
+        </li>
+        <li class="navbar-nav__list-item is-relative" ng-mouseenter="vm.hasEnterRSS = true" ng-mouseleave="vm.hasEnterRSS = false">
+          <a href="/" class="text-white">Resources</a>
+          <div class="is-absolute navbar__RSS" ng-show="vm.hasEnterRSS">
+            <a href="#">
+              <div class="navbar__RSS__tab">
+                Books
+              </div>
+            </a>
+            <a href="#">
+              <div class="navbar__RSS__tab">
+                Professional Development
+              </div>
+            </a>
+            <a href="#">
+              <div class="navbar__RSS__tab">
+                Interesting Websites
+              </div>
+            </a>
+          </div>
+        </li>
+        <li class="navbar-nav__list-item"><a href="/" class="text-white">Online Book Store</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li ng-hide="navvm.isLoggedIn"><a href="login">Sign in</a></li>
-        <li ng-show="navvm.isLoggedIn"><a href="profile">{{ navvm.currentUser.name }}</a></li>
-        <li ng-show="navvm.isLoggedIn"><a href="/" ng-click="navvm.onClick()">Logout</a></li>
-      </ul>
+    </div>
+    <!-- Level 3: User Icon -->
+    <div class="col-md-1">
+      <div class="navbar__user-icon" ng-mouseenter="vm.hasEnterUserIcon = true">
+        <!-- hover over, show the dropdown -->
+        <i class="fa fa-user-o fa-2x text-white" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
+  <div class="is-absolute navbar__user-status" ng-show="vm.hasEnterUserIcon">
+    <!-- if login, show the user name and log out  -->
+    <div ng-show="navvm.isLoggedIn">
+      <a>Hi, {{ navvm.currentUser.name }}</a>
+      <a href="#" class="btn btn-primary width--user-btn mtop-30">Account</a>
+      <a href="/" ng-click="navvm.onClick()" class="btn btn-danger width--user-btn mtop-30">Logout</a>
+    </div>
+
+    <!-- else, show login and register -->
+    <div ng-show="!navvm.isLoggedIn">
+      <a href="/login" class="btn btn-primary width--user-btn">Login</a>
+      <a href="/register" class="btn btn-secondary width--user-btn mtop-30">Register</a>
     </div>
   </div>
 </div>

@@ -1,0 +1,165 @@
+/* TEST */
+.main-test {
+  border: 1px solid green;
+}
+
+.hide {
+  display: none;
+}
+
+.bg-dark {
+  background-color: #000;
+}
+/* Variables */
+$navigationHeight: 66px;
+$coPrimaryBlue: #0575c2;
+$coLightGray: #f6f6f6;
+/* TEXT */
+.text-white {
+  color: #fff;
+}
+/* PADDINGS */
+/* PADDING TOP*/
+.ptop-30 {
+  padding-top: 30px;
+}
+
+/* PADDING BOTTOM */
+.pbottom-30 {
+  padding-bottom: 30px;
+}
+/* PADDING TOP*/
+/* MARGINS */
+/* MARGIN TOP */
+.mtop-10 {
+  margin-top: 10px;
+}
+.mtop-20 {
+  margin-top: 20px;
+}
+.mtop-30 {
+  margin-top: 30px;
+}
+.mtop-60 {
+  margin-top: 60px;
+}
+.mtop-main {
+  margin-top: $navigationHeight;
+}
+/* MARGIN BOTTOM */
+.mbottom-30 {
+  margin-bottom: 30px;
+}
+/* MARGIN LEFT */
+.mleft-m30 {
+  margin-left: -30px;
+}
+/* MARGIN RIGHT */
+.mright-15 {
+  margin-right: 15px;
+}
+/* HEIGHT */
+.height--main-min {
+  min-height: 75vh;
+}
+
+/* WIDTH */
+.width--full {
+  width: 100%;
+}
+.width--65 {
+  width: 65%;
+}
+
+.width--user-btn {
+  width: 125px;
+}
+/* HEIGHT */
+
+/* POSITION */
+.is-relative {
+  position: relative;
+}
+
+.is-absolute {
+  position: absolute;
+}
+
+/* FLEX */
+.flex {
+  display: flex;
+}
+.flex-justify-center {
+  justify-content: center;
+}
+.flex-justify-evenly {
+  justify-content: space-evenly;
+}
+.flex-direction--row {
+  flex-direction: row;
+}
+.flex-align-items-center {
+  align-items: center;
+}
+/* Specific Classes */
+// Navigation
+navigation {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: $coPrimaryBlue;
+  text-transform: capitalize;
+  border-bottom: 1px solid $coLightGray;
+}
+.nav--height {
+  height: $navigationHeight;
+}
+.navbar__user-status {
+  top: $navigationHeight;
+  right: 30px;
+  width: 200px;
+  text-align: center;
+  padding: 30px 0;
+  background-color: $coLightGray;
+}
+.navbar {
+  padding: 0;
+}
+.navbar__user-icon {
+  @extend .flex;
+  @extend .flex-justify-center;
+}
+.navbar-nav {
+  @extend .flex-direction--row;
+  @extend .flex-justify-evenly;
+}
+.navbar-nav__list-item {
+  @extend .flex;
+  @extend .flex-align-items-center;
+  height: $navigationHeight;
+}
+.navbar__JME {
+  top: $navigationHeight;
+  width: 200px;
+}
+.navbar__JME__tab,
+.navbar__RSS__tab {
+  background-color: $coLightGray;
+  padding: 20px 0;
+}
+a:first-child .navbar__JME__tab {
+  border-bottom: 1px solid gray;
+}
+
+a:first-child,
+a:nth-child(2) {
+  .navbar__RSS__tab {
+    border-bottom: 1px solid gray;
+  }
+}
+
+.navbar__RSS {
+  top: $navigationHeight;
+  width: 250px;
+}

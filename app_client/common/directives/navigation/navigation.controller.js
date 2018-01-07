@@ -23,6 +23,9 @@
       }
     };
 
+    vm.hasEnterUserIcon = false;
+    vm.hasEnterJME = false;
+    vm.hasEnterRSS = false;
   }
 
 })();
