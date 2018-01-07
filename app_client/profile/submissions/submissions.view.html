@@ -1,7 +1,15 @@
 <navigation></navigation>
 
-<div class="container main-test">
-  <h2 class="text-center mtop-30 mbottom-30">Submissions of {{ vm.routeParams.submissionCategory }} for {{ vm.routeParams.submissionFor }}</h2>
+<div class="container mtop-main height--main-min ptop-30">
+  <!-- sitemap -->
+  <div class="sitemap">
+    <a href="/">Home</a>
+    <i class="fa fa-angle-right" aria-hidden="true"></i>
+    <a href="/profile">Profile</a>
+    <i class="fa fa-angle-right" aria-hidden="true"></i>
+    <a>Submissions of {{ vm.routeParams.submissionCategory }} for {{ vm.routeParams.submissionFor }}</a>
+  </div>
+  <h2 class="text-center ptop-30 pbottom-30">Submissions of {{ vm.routeParams.submissionCategory }} for {{ vm.routeParams.submissionFor }}</h2>
   <div class="row" ng-repeat="submission in vm.data">
     <div class="col-sm-12" ng-repeat="file in submission.files">
       <div class="container">

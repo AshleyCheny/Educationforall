@@ -1,7 +1,7 @@
 <div class="navbar navbar-default is-relative"  ng-mouseleave="vm.hasEnterUserIcon = false">
   <div class="container-fluid">
     <!-- Level 1: LOGO -->
-    <div class="col-md-3">
+    <div class="col-md-2">
       <a href="/"><img class="nav--height mleft-m30" src="/images/Education_for_all--logo.jpg" alt="Education For All Logo"></a>
     </div>
     <!-- Level 2: Links -->
@@ -47,9 +47,10 @@
       </ul>
     </div>
     <!-- Level 3: User Icon -->
-    <div class="col-md-1">
+    <div class="col-md-2">
       <div class="navbar__user-icon" ng-mouseenter="vm.hasEnterUserIcon = true">
         <!-- hover over, show the dropdown -->
+        <a class="pright-10 text-white" ng-show="navvm.isLoggedIn">Hi, {{ navvm.currentUser.name }}</a>
         <i class="fa fa-user-o fa-2x text-white" aria-hidden="true"></i>
       </div>
     </div>
@@ -57,8 +58,7 @@
   <div class="is-absolute navbar__user-status" ng-show="vm.hasEnterUserIcon">
     <!-- if login, show the user name and log out  -->
     <div ng-show="navvm.isLoggedIn">
-      <a>Hi, {{ navvm.currentUser.name }}</a>
-      <a href="#" class="btn btn-primary width--user-btn mtop-30">Account</a>
+      <a href="profile" class="btn btn-primary width--user-btn mtop-15">Profile</a>
       <a href="/" ng-click="navvm.onClick()" class="btn btn-danger width--user-btn mtop-30">Logout</a>
     </div>
 

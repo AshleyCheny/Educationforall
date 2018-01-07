@@ -1,9 +1,17 @@
 <navigation></navigation>
 
-<div class="container">
+<div class="container mtop-main ptop-30">
 
+  <!-- sitemap -->
+  <div class="sitemap">
+    <a href="/">Home</a>
+    <i class="fa fa-angle-right" aria-hidden="true"></i>
+    <a href="/profile">Profile</a>
+    <i class="fa fa-angle-right" aria-hidden="true"></i>
+    <a>Submission</a>
+  </div>
   <!--  Manuscript Submission Form -->
-  <h2 class="form-signin-heading text-center">Submit Your Manuscript</h2>
+  <h2 class="form-signin-heading text-center ptop-30 pbottom-30">Submit Your Manuscript</h2>
   <form ng-submit="vm.onSubmit()">
     <input type="text" ng-model="vm.submission.userId" class="hide" value="">
     <input type="text" ng-model="vm.submission.userEmail" class="hide" value="">
@@ -52,7 +60,9 @@
       <label for="author">Author</label>
       <input type="text" class="form-control" placeholder="Enter the author name" ng-model="vm.submission.author" name="author">
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <div class="text-right">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
   </form>
 </div>
 

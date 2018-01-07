@@ -28,6 +28,10 @@ $coLightGray: #f6f6f6;
 .pbottom-30 {
   padding-bottom: 30px;
 }
+/* PADDING RIGHT */
+.pright-10 {
+  padding-right: 10px;
+}
 /* PADDING TOP*/
 /* MARGINS */
 /* MARGIN TOP */
@@ -129,6 +133,7 @@ navigation {
 .navbar__user-icon {
   @extend .flex;
   @extend .flex-justify-center;
+  @extend .flex-align-items-center;
 }
 .navbar-nav {
   @extend .flex-direction--row;
