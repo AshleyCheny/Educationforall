@@ -2,7 +2,9 @@
 .main-test {
   border: 1px solid green;
 }
-
+.test {
+  border: 2px solid red;
+}
 .hide {
   display: none;
 }
@@ -14,11 +16,15 @@
 $navigationHeight: 66px;
 $coPrimaryBlue: #0575c2;
 $coLightGray: #f6f6f6;
+$coBorderGray: rgba(0, 0, 0, 0.125);
 /* TEXT */
 .text-white {
   color: #fff;
 }
 /* PADDINGS */
+.padding-10 {
+  padding: 10px;
+}
 /* PADDING TOP*/
 .ptop-30 {
   padding-top: 30px;
@@ -104,6 +110,11 @@ $coLightGray: #f6f6f6;
 }
 .flex-align-items-center {
   align-items: center;
+}
+
+/* BORDER */
+.border-bottom--Light-gray {
+  border-bottom: 1px solid $coBorderGray;
 }
 /* Specific Classes */
 // Navigation

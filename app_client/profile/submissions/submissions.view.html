@@ -10,20 +10,61 @@
     <a>Submissions of {{ vm.routeParams.submissionCategory }} for {{ vm.routeParams.submissionFor }}</a>
   </div>
   <h2 class="text-center ptop-30 pbottom-30">Submissions of {{ vm.routeParams.submissionCategory }} for {{ vm.routeParams.submissionFor }}</h2>
-  <div class="row" ng-repeat="submission in vm.data">
-    <div class="col-sm-12" ng-repeat="file in submission.files">
-      <div class="container">
-        <div class="row">
-          <div class="col-2">
-            {{ submission.submissionType }}
-          </div>
-          <div class="col-7">
-            <a href="" target="_blank" ng-click="vm.onClick(file.filename);">{{ file.originalname }}</a>
-          </div>
-          <div class="col-3 text-right">
-            <button type="button" name="button">Update</button>
-            <button type="button" name="button" ng-click="vm.deleteFile(submission._id, file._id);">Delete</button>
-          </div>
+  <!-- Loop through all the submissions for the specific journal and target issue -->
+  <div class="row mbottom-30" ng-repeat="submission in vm.data">
+    <div class="container card">
+      <div class="row padding-10 border-bottom--Light-gray">
+        <div class="col-sm-4">
+          Submission Type
+        </div>
+        <div class="col-sm-8">
+          {{ submission.submissionType }}
+        </div>
+      </div>
+      <div class="row padding-10 border-bottom--Light-gray">
+        <div class="col-sm-4">
+          Title
+        </div>
+        <div class="col-sm-8">
+          {{ submission.title }}
+        </div>
+      </div>
+      <div class="row padding-10 border-bottom--Light-gray">
+        <div class="col-sm-4">
+          Abstract
+        </div>
+        <div class="col-sm-8">
+          {{ submission.abstract }}
+        </div>
+      </div>
+      <div class="row padding-10 border-bottom--Light-gray">
+        <div class="col-sm-4">
+          Author(s)
+        </div>
+        <div class="col-sm-8">
+          {{ submission.authors }}
+        </div>
+      </div>
+      <div class="row padding-10 border-bottom--Light-gray">
+        <div class="col-sm-4">
+          Keyword(s)
+        </div>
+        <div class="col-sm-8" ng-repeat="keyword in submission.keywords">
+          <span>{{ keyword }}</span>
+        </div>
+      </div>
+      <div class="row padding-10 border-bottom--Light-gray">
+        <div class="col-sm-4">
+          File(s)
+        </div>
+        <div class="col-sm-8">
+          <div ng-repeat="file in submission.files"><a href="" target="_blank" ng-click="vm.onClick(file.filename);">{{ file.originalname }}</a></div>
+        </div>
+      </div>
+      <div class="row padding-10">
+        <div class="col-12 text-right">
+          <button type="button" name="button" class="btn btn-primary" ng-click="vm.updateSubmission(submission._id, file._id);">Update</button>
+          <button type="button" name="button" class="btn btn-danger" ng-click="vm.deleteFile(submission._id, file._id);">Delete</button>
         </div>
       </div>
     </div>
