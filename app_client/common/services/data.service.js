@@ -55,8 +55,8 @@
       return $http.get('/api/files/'+ fileName);
     }
 
-    var deleteFile = function(submissionId, fileId){
-      return $http.delete('/api/delete/submissions/' + submissionId +'/files/' + fileId);
+    var deleteSubmission = function(submissionId){
+      return $http.delete('/api/delete/submissions/' + submissionId);
     }
 
     var signUpAsReviewer = function(userEmail){
@@ -68,7 +68,7 @@
       submitManuscript: submitManuscript,
       getSubmissions: getSubmissions,
       getSumissionFile: getSumissionFile,
-      deleteFile: deleteFile,
+      deleteSubmission: deleteSubmission,
       signUpAsReviewer: signUpAsReviewer
     };
   }

@@ -10,6 +10,11 @@
     <a>Submissions of {{ vm.routeParams.submissionCategory }} for {{ vm.routeParams.submissionFor }}</a>
   </div>
   <h2 class="text-center ptop-30 pbottom-30">Submissions of {{ vm.routeParams.submissionCategory }} for {{ vm.routeParams.submissionFor }}</h2>
+  <div class="row mbottom-30" ng-show="vm.hasSubmission">
+    <div class="col-12 text-right">
+      <a href="profile/submission" class="btn btn-primary">Submit the full paper or revisions</a>
+    </div>
+  </div>
   <!-- Loop through all the submissions for the specific journal and target issue -->
   <div class="row mbottom-30" ng-repeat="submission in vm.data">
     <div class="container card">
@@ -64,12 +69,12 @@
       <div class="row padding-10">
         <div class="col-12 text-right">
           <button type="button" name="button" class="btn btn-primary" ng-click="vm.updateSubmission(submission._id, file._id);">Update</button>
-          <button type="button" name="button" class="btn btn-danger" ng-click="vm.deleteFile(submission._id, file._id);">Delete</button>
+          <button type="button" name="button" class="btn btn-danger" ng-click="vm.deleteSubmission(submission._id);">Delete</button>
         </div>
       </div>
     </div>
   </div>
-  <div ng-hide="vm.hasFile">
+  <div ng-hide="vm.hasSubmission">
     <div class="container">
       <div class="row">
         <div class="col-sm-8">

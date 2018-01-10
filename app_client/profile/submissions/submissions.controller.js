@@ -24,13 +24,17 @@
               // get the response data from the api and append it to the controller
               vm.data = data.data;
 
-              // check if there are no files
-              vm.hasFile = false;
-              angular.forEach(vm.data, function(doc, index){
-                if (doc.files.length > 0) {
-                  vm.hasFile = true;
-                }
-              });
+              // check if there are no submissions
+              vm.hasSubmission = true;
+
+              if (vm.data.length <= 0) {
+                vm.hasSubmission = false;
+              }
+              // angular.forEach(vm.data, function(doc, index){
+              //   if (doc.files.length > 0) {
+              //     vm.hasFile = true;
+              //   }
+              // });
 
               // onclick event handler
               vm.onClick = function(fileName){
@@ -38,14 +42,17 @@
               }
 
               // delete event handler
-              vm.deleteFile = function(submissionId, fileId){
-                meanData.deleteFile(submissionId, fileId)
-                  .then(function(data){
-                    window.location.reload();
-                  })
-                  .catch(function(err){
-                    console.log(err);
-                  });
+              vm.deleteSubmission = function(submissionId){
+                deleteSubmission = window.confirm('Are you sure you want to delete this submission?');
+                if (deleteSubmission) {
+                  meanData.deleteSubmission(submissionId)
+                    .then(function(data){
+                      window.location.reload();
+                    })
+                    .catch(function(err){
+                      console.log(err);
+                    });
+                }
               }
             })
             .catch(function(err){

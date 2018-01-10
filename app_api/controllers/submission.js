@@ -34,12 +34,20 @@ module.exports.getSumissionFile = function(req,res){
   });
 }
 
-module.exports.deleteFile = function(req, res){
-  Submission.findOneAndUpdate(
-    { _id: req.params.submissionId, 'files._id': req.params.fileId },
-    {$pull: {files: {_id: req.params.fileId}}},
-    {new: true},
-    function(err, doc){
+module.exports.deleteSubmission = function(req, res){
+  // Submission.findOneAndUpdate(
+  //   { _id: req.params.submissionId, 'files._id': req.params.fileId },
+  //   {$pull: {files: {_id: req.params.fileId}}},
+  //   {new: true},
+  //   function(err, doc){
+  //     res.send(doc);
+  // });
+  Submission.find({ _id: req.params.submissionId }).remove(function(err, doc){
+    if (err) {
+      console.log(err);
+    }
+    else {
       res.send(doc);
+    }
   });
 }

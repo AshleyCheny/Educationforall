@@ -50,6 +50,6 @@ router.get('/submissions/:user_email', ctrlProfile.getSubmissions);
 router.get('/files/:fileName', ctrlSubmission.getSumissionFile);
 
 // delete file from one submission document
-router.delete('/delete/submissions/:submissionId/files/:fileId', ctrlSubmission.deleteFile);
+router.delete('/delete/submissions/:submissionId', ctrlSubmission.deleteSubmission);
 
 module.exports = router;

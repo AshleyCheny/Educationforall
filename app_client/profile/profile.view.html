@@ -14,13 +14,13 @@
           <div class="card-body" ng-hide='!vm.jme.length'>
             <h4 class="card-title">Journal of Mathematics Education</h4>
             <ul class="card-text" ng-repeat='submission in vm.jme'>
-              <li><a href="profile/submissions/jme/{{ submission.submissionFor }}">{{ submission.submissionFor }}</a></li>
+              <li><a href="profile/submissions/jme/{{ submission.submissionFor }}">Target Issue: {{ submission.submissionFor }}</a></li>
             </ul>
           </div>
           <div class="card-body" ng-hide='!vm.others.length'>
             <h4 class="card-title">Others</h4>
             <ul class="card-text" ng-repeat='submission in vm.others'>
-              <li><a href="profile/submissions/others/{{ submission.submissionFor }}">{{ submission.submissionFor }}</a></li>
+              <li><a href="profile/submissions/others/{{ submission.submissionFor }}">Target Issue: {{ submission.submissionFor }}</a></li>
             </ul>
           </div>
         </div>
