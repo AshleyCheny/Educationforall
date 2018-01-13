@@ -46,6 +46,9 @@ router.post('/create', upload.any(), ctrlSubmission.submitManuscript);
 // route for getting all the submissions for a specific user
 router.get('/submissions/:user_email', ctrlProfile.getSubmissions);
 
+// route for getting a submission by id
+router.get('/submission/:submission_id', ctrlProfile.getSubmissionById);
+
 // route for getting the files from the file system
 router.get('/files/:fileName', ctrlSubmission.getSumissionFile);
 

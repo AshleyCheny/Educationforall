@@ -12,7 +12,7 @@
   <h2 class="text-center ptop-30 pbottom-30">Submissions of {{ vm.routeParams.submissionCategory }} for {{ vm.routeParams.submissionFor }}</h2>
   <div class="row mbottom-30" ng-show="vm.hasSubmission">
     <div class="col-12 text-right">
-      <a href="profile/submission" class="btn btn-primary">Submit the full paper or revisions</a>
+      <a href="profile/submission/new/{{ vm.routeParams.submissionCategory }}/{{ vm.routeParams.submissionFor }}" class="btn btn-primary">Submit the full paper or revisions</a>
     </div>
   </div>
   <!-- Loop through all the submissions for the specific journal and target issue -->
@@ -68,7 +68,7 @@
       </div>
       <div class="row padding-10">
         <div class="col-12 text-right">
-          <button type="button" name="button" class="btn btn-primary" ng-click="vm.updateSubmission(submission._id, file._id);">Update</button>
+          <a href="/profile/submission/update/{{submission._id}}" class="btn btn-primary" ng-click="vm.updateSubmission(submission._id, file._id);">Update</a>
           <button type="button" name="button" class="btn btn-danger" ng-click="vm.deleteSubmission(submission._id);">Delete</button>
         </div>
       </div>
@@ -81,7 +81,7 @@
           Oops, you haven't submitted any manuscripts for {{ vm.routeParams.submissionCategory }} {{ vm.routeParams.submissionFor }} issue yet.
         </div>
         <div class="col-sm-4 text-right">
-          <a href="profile/submission" class="btn btn-primary">Submit a Manuscript</a>
+          <a href="profile/submission/new/{{ vm.routeParams.submissionCategory }}/{{ vm.routeParams.submissionFor }}" class="btn btn-primary">Submit a Manuscript</a>
         </div>
       </div>
     </div>

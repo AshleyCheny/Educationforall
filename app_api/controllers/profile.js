@@ -73,3 +73,15 @@ module.exports.signUpAsReviewer = function(req,res){
       }
   });
 }
+
+module.exports.getSubmissionById = function(req,res){
+  // query the db based on the submission id
+  Submission.findOne({_id: req.params.submission_id }, function(err, doc){
+    if (err) {
+      console.log("Oops, get submission from server error");
+      res.send(err);
+    } else {
+      res.status(200).json(doc);
+    }
+  });
+}

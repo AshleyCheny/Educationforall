@@ -51,12 +51,20 @@
       }
     }
 
+    var getSubmissionById = function(submissionId){
+      return $http.get('/api/submission/' + submissionId);
+    }
+
     var getSumissionFile = function(fileName){
       return $http.get('/api/files/'+ fileName);
     }
 
     var deleteSubmission = function(submissionId){
       return $http.delete('/api/delete/submissions/' + submissionId);
+    }
+
+    var updateSubmission = function(submissionId, formDate, files){
+
     }
 
     var signUpAsReviewer = function(userEmail){
@@ -69,7 +77,9 @@
       getSubmissions: getSubmissions,
       getSumissionFile: getSumissionFile,
       deleteSubmission: deleteSubmission,
-      signUpAsReviewer: signUpAsReviewer
+      signUpAsReviewer: signUpAsReviewer,
+      getSubmissionById: getSubmissionById,
+      updateSubmission: updateSubmission
     };
   }
 

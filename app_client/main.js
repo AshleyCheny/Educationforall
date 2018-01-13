@@ -25,7 +25,7 @@
         controller: 'profileCtrl',
         controllerAs: 'vm'
       })
-      .when('/profile/submission', {
+      .when('/profile/submission/:type/:param1?/:param2?', {
         templateUrl: '/profile/submission/submission.view.html',
         controller: 'submissionCtrl',
         controllerAs: 'vm'
