@@ -29,7 +29,7 @@
       </div>
       <div class="col">
         <div class="form-group">
-          <label for="submissionFor">Submission For</label>
+          <label for="submissionFor">Target Issue</label>
           <select class="form-control" id="submissionFor" ng-model="vm.submission.submissionFor" ng-options="x for x in {{ vm.submissionFor }}">
           </select>
         </div>
@@ -48,6 +48,14 @@
       <label for="keywords">Keywords</label>
       <input type="text" class="form-control" id="keywords" placeholder="Enter your paper keywords" ng-model="vm.submission.keywords" name="paperKeywords">
     </div>
+    <div class="form-group" ng-if="vm.formType == 2">
+      <label for="keywords" ng-hide="vm.noFile">Submitted Files</label>
+      <label ng-show="vm.noFile" class="text-red" id="resubmit-label">Please update the files following*</label>
+      <div class="flex flex-justify-between flex-align-items-center ptop-10 pbottom-10 border-bottom--Light-gray" ng-repeat="(index, file) in vm.existingFiles">
+        <a href="" target="_blank" ng-click="vm.onClick(file.filename);">{{index+1}}. {{ file.originalname }}</a>
+        <a class="btn btn-danger text-white" ng-click="vm.deleteFile(vm.submission._id, file._id)">Delete</a>
+      </div>
+    </div>
     <div class="form-group">
       <label for="paper-file">Paper File</label>
       <input type="file" class="form-control" id="paper-file" file-model="vm.files[0]" name="paperFile">
@@ -62,6 +70,9 @@
     </div>
     <div class="text-right">
       <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    <div class="form-group alert alert-success mtop-10" ng-show="vm.updateSuccess">
+      You successfully updated the submission!
     </div>
   </form>
 </div>

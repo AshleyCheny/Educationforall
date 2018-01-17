@@ -17,20 +17,31 @@ $navigationHeight: 66px;
 $coPrimaryBlue: #0575c2;
 $coLightGray: #f6f6f6;
 $coBorderGray: rgba(0, 0, 0, 0.125);
+$coRed: #ff0000;
+$coWhite: #fff;
 /* TEXT */
 .text-white {
-  color: #fff;
+  color: $coWhite;
+}
+.text-red {
+  color: $coRed;
 }
 /* PADDINGS */
 .padding-10 {
   padding: 10px;
 }
 /* PADDING TOP*/
+.ptop-10 {
+  padding-top: 10px;
+}
 .ptop-30 {
   padding-top: 30px;
 }
 
 /* PADDING BOTTOM */
+.pbottom-10 {
+  padding-bottom: 10px;
+}
 .pbottom-30 {
   padding-bottom: 30px;
 }
@@ -105,6 +116,9 @@ $coBorderGray: rgba(0, 0, 0, 0.125);
 .flex-justify-evenly {
   justify-content: space-evenly;
 }
+.flex-justify-between {
+  justify-content: space-between;
+}
 .flex-direction--row {
   flex-direction: row;
 }
@@ -115,6 +129,10 @@ $coBorderGray: rgba(0, 0, 0, 0.125);
 /* BORDER */
 .border-bottom--Light-gray {
   border-bottom: 1px solid $coBorderGray;
+}
+/* BUTTON */
+.btn {
+  cursor: pointer;
 }
 /* Specific Classes */
 // Navigation

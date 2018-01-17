@@ -52,7 +52,12 @@ router.get('/submission/:submission_id', ctrlProfile.getSubmissionById);
 // route for getting the files from the file system
 router.get('/files/:fileName', ctrlSubmission.getSumissionFile);
 
-// delete file from one submission document
+// delete a submission document
 router.delete('/delete/submissions/:submissionId', ctrlSubmission.deleteSubmission);
 
+// delete a file by its id
+router.delete('/submissions/:submissionId/files/:fileId', ctrlSubmission.deleteFile);
+
+// update a submission
+router.put('/submissions/:submissionId', upload.any(), ctrlSubmission.updateSubmission);
 module.exports = router;

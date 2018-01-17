@@ -4,14 +4,14 @@
     .module('educatinforall-angular-app')
     .controller('submissionCtrl', submissionCtrl);
 
-    submissionCtrl.$inject = ['$location', 'meanData', 'utilities', '$routeParams'];
-    function submissionCtrl ($location, meanData, utilities, $routeParams) {
+    submissionCtrl.$inject = ['$location', 'meanData', 'utilities', '$routeParams', '$anchorScroll'];
+    function submissionCtrl ($location, meanData, utilities, $routeParams, $anchorScroll) {
       var vm = this;
       var yearCount = 5;
       var currentYear = (new Date()).getFullYear();
 
       console.log($routeParams);
-      var formType = utilities.checkFormType($routeParams);
+      vm.formType = utilities.checkFormType($routeParams);
 
       vm.files = [];
 
@@ -54,7 +54,7 @@
         });
 
       // actions based on the type of the form
-      if (formType == 1) {
+      if (vm.formType == 1) {
         vm.submission.submissionFor = $routeParams.param2;
         if ($routeParams.param1 == 'jme') {
           vm.submission.submissionCategory = "Journal of Mathematics Education";
@@ -62,8 +62,9 @@
           vm.submission.submissionCategory = "Others";
         }
       }
-      if (formType == 2) {
+      if (vm.formType == 2) {
         // prefill the form
+        vm.submission._id = $routeParams.param1;
         meanData.getSubmissionById($routeParams.param1)
           .then(function(data){
             var doc = data.data;
@@ -74,6 +75,10 @@
             vm.submission.abstract = doc.abstract;
             vm.submission.keywords = doc.keywords;
             vm.submission.author = doc.author;
+            vm.existingFiles = doc.files;
+            if (vm.existingFiles.length == 0) {
+              vm.noFile = true;
+            }
           })
           .catch(function(err){
             console.log(err);
@@ -82,20 +87,24 @@
 
       // submit the form data
       vm.onSubmit = function(){
-        console.log("submit");
-        console.log(vm.submission);
-        console.log(vm.files);
 
-        if (formType == 2) {
+        if (vm.formType == 2) {
           // update the existing submission
           // files is optional
-          meanData.updateSubmission($routeParams.param1, vm.submission, vm.files)
-          .then(function(data){
-            console.log(data);
-          })
-          .catch(function(err){
-            console.log(err);
-          });
+          if (vm.noFile && vm.files.length == 0) {
+            $($location.hash('resubmit-label'));
+            $anchorScroll();
+          }
+          else {
+            meanData.updateSubmission($routeParams.param1, vm.submission, vm.files)
+            .then(function(data){
+              console.log(data);
+              vm.updateSuccess = true;
+            })
+            .catch(function(err){
+              console.log(err);
+            });
+          }
         } else {
           // post the new submission
           meanData.submitManuscript(vm.submission, vm.files)
@@ -108,6 +117,23 @@
           });
         }
       };
+
+      // click on the file link
+      vm.onClick = meanData.openAndDownloadFile;
+
+      // click a file by id
+      vm.deleteFile = function(submissionId, fileId){
+        deleteSubmission = window.confirm('Are you sure you want to delete this file?');
+        if (deleteSubmission) {
+          meanData.deleteFile(submissionId, fileId)
+            .then(function(data){
+              window.location.reload();
+            })
+            .catch(function(err){
+              console.log(err);
+            });
+        }
+      }
 
       console.log('Submission controller is running');
     }

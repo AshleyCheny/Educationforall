@@ -43,6 +43,34 @@
       });
     }
 
+    var updateSubmission = function(submissionId, formData, files){
+
+      var fd = new FormData();
+      fd.append('userId', formData.userId);
+      fd.append('userEmail', formData.userEmail);
+      fd.append('submissionType', formData.submissionType);
+      fd.append('submissionCategory', formData.submissionCategory);
+      fd.append('submissionFor', formData.submissionFor);
+      fd.append('title', formData.title);
+      fd.append('abstract', formData.abstract);
+      fd.append('keywords', formData.keywords.split(','));
+      fd.append('authors', formData.authors.split(','));
+
+      if (files.length > 0) {
+        angular.forEach(files,function(file){
+          fd.append('file', file);
+        });
+      }
+
+      return $http.put('/api/submissions/' + submissionId, fd, {
+        transformRequest: angular.identity,
+        headers: {
+              'Content-Type': undefined
+        }
+      });
+
+    }
+
     var getSubmissions = function(userEmail, routeParams){
       if (routeParams) {
         return $http.get('/api/submissions/' + userEmail + '/?category=' + routeParams.submissionCategory + '&target=' + routeParams.submissionFor);
@@ -63,12 +91,16 @@
       return $http.delete('/api/delete/submissions/' + submissionId);
     }
 
-    var updateSubmission = function(submissionId, formDate, files){
-
+    var deleteFile = function(submissionId, fileId) {
+      return $http.delete('/api/submissions/' + submissionId + '/files/' + fileId);
     }
 
     var signUpAsReviewer = function(userEmail){
       return $http.put('/api/reviewer_sign_up/' + userEmail);
+    }
+
+    var openAndDownloadFile = function(fileName){
+      window.open('/api/files/' + fileName);
     }
 
     return {
@@ -79,7 +111,9 @@
       deleteSubmission: deleteSubmission,
       signUpAsReviewer: signUpAsReviewer,
       getSubmissionById: getSubmissionById,
-      updateSubmission: updateSubmission
+      updateSubmission: updateSubmission,
+      openAndDownloadFile, openAndDownloadFile,
+      deleteFile,deleteFile
     };
   }
 

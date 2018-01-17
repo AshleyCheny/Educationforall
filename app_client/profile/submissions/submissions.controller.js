@@ -37,9 +37,7 @@
               // });
 
               // onclick event handler
-              vm.onClick = function(fileName){
-                window.open('/api/files/' + fileName);
-              }
+              vm.onClick = meanData.openAndDownloadFile;
 
               // delete event handler
               vm.deleteSubmission = function(submissionId){
