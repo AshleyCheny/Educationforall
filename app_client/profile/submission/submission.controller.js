@@ -23,8 +23,8 @@
         submissionFor: '',
         title: '',
         abstract: '',
-        keywords: '',
-        authors: ''
+        keywords: [],
+        authors: []
       };
 
       // set the data for the view dropdowns
@@ -67,14 +67,15 @@
         vm.submission._id = $routeParams.param1;
         meanData.getSubmissionById($routeParams.param1)
           .then(function(data){
+            console.log(data);
             var doc = data.data;
             vm.submission.title = doc.title;
             vm.submission.submissionType = doc.submissionType;
             vm.submission.submissionFor = doc.submissionFor;
             vm.submission.submissionCategory = doc.submissionCategory;
             vm.submission.abstract = doc.abstract;
-            vm.submission.keywords = doc.keywords;
-            vm.submission.author = doc.author;
+            vm.submission.keywords = doc.keywords.join(',');
+            vm.submission.authors = doc.authors.join(',');
             vm.existingFiles = doc.files;
             if (vm.existingFiles.length == 0) {
               vm.noFile = true;

@@ -18,8 +18,6 @@
 
     var submitManuscript = function(formData, files){
       var fd = new FormData();
-      console.log("submitManuscript function: ", formData);
-      console.log("submitManuscript function: ", files);
 
       angular.forEach(files,function(file){
         fd.append('file', file);
@@ -32,8 +30,14 @@
       fd.append('submissionFor', formData.submissionFor);
       fd.append('title', formData.title);
       fd.append('abstract', formData.abstract);
-      fd.append('keywords', formData.keywords.split(','));
-      fd.append('authors', formData.authors.split(','));
+
+      angular.forEach(formData.keywords.split(','),function(keyword){
+        fd.append('keywords', keyword);
+      });
+
+      angular.forEach(formData.authors.split(','),function(author){
+        fd.append('authors', author);
+      });
 
       return $http.post('/api/create', fd, {
         transformRequest: angular.identity,

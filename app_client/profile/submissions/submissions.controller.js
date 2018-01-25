@@ -24,6 +24,11 @@
               // get the response data from the api and append it to the controller
               vm.data = data.data;
 
+              angular.forEach(vm.data, function(doc,index){
+                vm.data[index].authors = doc.authors.join(",");
+                vm.data[index].keywords = doc.keywords.join(",");
+              });
+
               // check if there are no submissions
               vm.hasSubmission = true;
 

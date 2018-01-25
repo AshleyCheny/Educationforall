@@ -49,9 +49,7 @@ var submissionSchema = new mongoose.Schema({
       type: String
     }
   } ],
-  authors: {
-    type: String
-  },
+  authors: [],
   reviewers: {
     type: String
   },
