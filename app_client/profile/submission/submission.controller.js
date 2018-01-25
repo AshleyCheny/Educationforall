@@ -10,7 +10,6 @@
       var yearCount = 5;
       var currentYear = (new Date()).getFullYear();
 
-      console.log($routeParams);
       vm.formType = utilities.checkFormType($routeParams);
 
       vm.files = [];
@@ -33,7 +32,6 @@
       vm.submissionTypes = ["Proposal", "Full Paper", "Revision 1", "Revision 2", "Revision 3", "Revision 4", "Review 1", "Review 2", "Review 3"];
 
       vm.submissionFor = [];
-      console.log(currentYear);
       for (var i = 0; i < yearCount; i++) {
         vm.submissionFor.push(currentYear + i + '03');
         vm.submissionFor.push(currentYear + i + '07');
@@ -46,7 +44,6 @@
       // get the userEmail
       meanData.getProfile()
         .then(function(data){
-          console.log("data", data);
           vm.submission.userEmail = data.data.email;
         })
         .catch(function (e) {
@@ -67,7 +64,6 @@
         vm.submission._id = $routeParams.param1;
         meanData.getSubmissionById($routeParams.param1)
           .then(function(data){
-            console.log(data);
             var doc = data.data;
             vm.submission.title = doc.title;
             vm.submission.submissionType = doc.submissionType;
@@ -99,7 +95,6 @@
           else {
             meanData.updateSubmission($routeParams.param1, vm.submission, vm.files)
             .then(function(data){
-              console.log(data);
               vm.updateSuccess = true;
             })
             .catch(function(err){

@@ -33,7 +33,6 @@
           vm.onClick = function(){
             meanData.signUpAsReviewer(vm.user.email)
               .then(function(data){
-                console.log(data);
                 vm.reviewer = true;
               })
               .catch(function(err){
